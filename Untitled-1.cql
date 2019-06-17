@@ -12,6 +12,6 @@ CREATE
   (`7`)-[:`allié` ]->(`7`),
   (`7`)-[:`filiation`]->(`7`)
 
-
-
-  CREATE (gnw :Plateforme {nom:"Emil Eifrem", born:1978})
+  CREATE (gnw :Plateforme {nom:"Game and Watch", annee:1980, ventes:43400000, salon:false, portable: true})
+  CREATE (gameboy :Plateforme {nom:"Game Boy", annee:1989, ventes:43400000, salon:false, portable: true})
+  
