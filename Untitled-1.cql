@@ -1,6 +1,7 @@
 MATCH(n) DETACH DELETE n;
+//----------------------------------------------------------------------------------------//
 CREATE
-  (`2` :Jeux {titre:'string,',`annee`:'int,',ventes_unites_M:'double,',`note%`:'int,',pegi:'int,',genre:'string,'}) ,
+  (`2` :Jeux {titre:'string,',`annee`:'int,',ventes_unites_M:'double,',`note%`:'int,',genre:'string,'}) ,
   (`7` :pesonnage {nom:'string,', `annee`:'int,'}) ,
   (`8` :Plateforme {nom : 'string,', `annee`:'int,', ventes_unites_M:'double,', salon:'boolean,', portable:'boolean'}) ,
   (`9` :Studios {nom:'string,',id_fortes:'string,',`annee`:'int,',`effectif`:'int'}) ,
@@ -31,12 +32,13 @@ CREATE
   CREATE (wii :Plateforme {nom:"Wii", annee:2006, ventes_unites_M:101.64, salon:true, portable:false})
   CREATE (wiiu :Plateforme {nom:"Wii U", annee: 2012, ventes_unites_M:13.56, salon:true, portable:false})
   CREATE (nx :Plateforme {nom:"Switch", annee: 2017, ventes_unites_M:34.74, salon:true, portable:true})
+  CREATE (oth :Plateforme {nom:"Autres plateformes", annee:null, ventes_unites_M:null, salon:null, portable:null})
 //---------------------------------------------------------------------------------------------//
 
 //---------------------------------------Studios-------------------------------------------//
   CREATE (NEPD :Studios {nom:'Nintendo Entertainement Planning & Development',id_fortes:'Shigeru Miyamoto-Satoru Iwata-Eiji Aonuma-Shinya Takahashi-Yoshiaki Koizumi', annee:1983 })
   CREATE (HalSora :Studios {nom:'HAL Laboratory/SORA Ltd', id_fortes:'Satoru Iwata-Masahiro Sakurai', annee:1980})
-  CREATE (Monolith :Studios {nom:'Monolith Soft', id_fortes:'Tetsuya Takahasi', annee:1999} )
+  CREATE (Monolith :Studios {nom:'Monolith Soft', id_fortes:'Tetsuya Takahasi', annee:1999})
   CREATE (Platinum :Studios {nom:'Platinum Games', id_fortes:'Tatsuya Minami', annee:2006})
   CREATE (Intellgt :Studios {nom:'Intellegent Systems', id_fortes:'Shozou Kaga', annee:1986})
   CREATE (Gf :Studios {nom:'Gamefreak', id_fortes:'Satoshi Tajiri-Junichi Masuda', annee:1989})
@@ -45,57 +47,95 @@ CREATE
 
 //---------------------------------------Jeux-------------------------------------------//
     //POKEMON
-  CREATE (pokerb :Jeux {titre:'Pokémon Rouge, Vert, Jaune & Bleu', annee:1996, ventes_unites_M:45.8, note%:88})
-  CREATE (pokedp :Jeux {titre:'Pokémon Diamant, Perle & Platine', annee:, ventes_unites_M:24.4, note%:85})
-  CREATE (pokexy :Jeux {titre:'Pokémon X & Y', annee:2013, ventes_unites_M:16.3, note%:88})
-  CREATE (pokesm :Jeux {titre:'Pokémon (Ultra)Soleil & (Ultra)Lune', annee:2016, ventes_unites_M:24, note%:87})
+  CREATE (pokerb :Jeux {titre:'Pokémon Rouge, Vert, Jaune & Bleu', annee:1996, ventes_unites_M:45.8, note%:88, genre:RPG})
+  CREATE (pokedp :Jeux {titre:'Pokémon Diamant, Perle & Platine', annee:, ventes_unites_M:24.4, note%:85, genre:RPG})
+  CREATE (pokexy :Jeux {titre:'Pokémon X & Y', annee:2013, ventes_unites_M:16.3, note%:88, genre:RPG})
+  CREATE (pokesm :Jeux {titre:'Pokémon (Ultra)Soleil & (Ultra)Lune', annee:2016, ventes_unites_M:24, note%:87, genre:RPG})
 
     //MARIO https://fr.wikipedia.org/wiki/Liste_des_jeux_vid%C3%A9o_Mario
-  CREATE (donkeyk :Jeux {titre:'Donkey Kong', annee:1981, ventes_unites_M:null, note%:null})
-  CREATE (mariob :Jeux {titre:'Mario Bros. Arcade', annee:1983, ventes_unites_M:null, note%:null})
+  CREATE (donkeyk :Jeux {titre:'Donkey Kong', annee:1981, ventes_unites_M:null, note%:null,genre:'Plateformeur'})
+  CREATE (mariob :Jeux {titre:'Mario Bros. Arcade', annee:1983, ventes_unites_M:null, note%:null,genre:'Plateformeur'})
   CREATE (Mariocement :Jeux {titre:'Marios Cement Factory', annee:1983, ventes_unites_M:null, note%:null})
-  CREATE (Mariobros :Jeux {titre:'Mario Bros', annee:1981, ventes_unités_M:2.3, note%:80})
-  CREATE (smb :Jeux {titre:'Super Mario Bros', annee:1985, ventes_unités_M:40, note%:null})
-  CREATE (lostlvl :Jeux {titre:'Super Mario Bros: The Lost Levels', annee:1986, ventes_unites_M:null, note%:null})
-  CREATE (smb2 :Jeux {titre:'Super Mario Bros 2', annee:1988, ventes_unites_M:7.5, note%:null})
-  CREATE (smb3 :Jeux {titre:'Super Mario Bros 3', annee:1990, ventes_unites_M:17.3, note%:null})
-  CREATE (sml :Jeux {tire:'Super Mario Land', annee:1989, ventes_unites_M:18.1, note%:null})
-  CREATE (drmario :Jeux {titre:'Dr. Mario', annee:1990, ventes_unites_M:null, note%:66})
-  CREATE (smw :Jeux {titre:'Super Mario World', annee:1991, ventes_unites_M:20.6, note%:null})
-  CREATE (sml2 :Jeux {titre: 'Super Mario Land 2', annee:1992, ventes_unites_M:11.2, note%:null})
-  CREATE (smrpg :Jeux {titre: 'Super Mario RPG: Lengend of the Seven Stars', annee: 1995, ventes_unites_M:1.5, note%:88})
-  CREATE (yoshiisl :Jeux {titre:'Yoshis Island', annee:1995, ventes_unites_M:null, note%:83})
-  CREATE (smsixfour :Jeux {titre:'Super Mario 64', annee:1996, ventes_unites_M:11.9, note%:94})
-  CREATE (paperm :Jeux {titre:'Paper Mario', annee:2001, ventes_unites_M:1.4, note%:93})
-  CREATE (smadv :Jeux {titre:'Super Mario Advance', annee:2001, ventes_unites_M:null, note%:75})
-  CREATE (smsun :Jeux {titre:'Super Mario Sunshine', annee:2002, ventes_unites_M:6.3, note%:91})
-  CREATE (malusuperstar :Jeux {titre:'Mario & Luigi Superstar Saga', annee:2003, ventes_unites_M:2.17, note%:90})
-  CREATE (mavsdk :Jeux {titre:'Mario vs Donkey Kong', annee:2004, ventes_unites_M:null , note%:null})
-  CREATE (malubrotime :Jeux {titre: 'Mario & Luigi: Les frères du temps', annee:2005, ventes_unites_M:1.3, note%:86})
-  CREATE (newsmb : Jeux {titre:'New Super Mario Bros.', annee:2006, ventes_unites_M:30.8, note%:89})
-  CREATE (smgal :Jeux{titre:'Super Mario Galaxy', annee:2007, ventes_unites_M:8.6, note%:97})
-  CREATE (mlvoycbow :Jeux{titre:'Mario & Luigi: Voyage au centre de Bowser', ventes_unites_M:null, note%:90})
-  CREATE (nsmbw :Jeux{titre:'New Super Mario Bros Wii', annee:2009, ventes_unites_M:13.8, note%:87})
-  CREATE (smgtwo : Jeux{titre:'Super Mario Galaxy 2', annee:2010,ventes_unites_M:6.4, note%:90})
-  CREATE (sm3dl: Jeux{titre:'Super Mario 3D Land', annee:2011, ventes_unites_M:5.82, note%:93})
-  CREATE (nsmb2: Jeux{titre:'New Super Mario Bros. 2', annee:2012,ventes_unites_M:13.16, note%:78})
-  CREATE (nsmbu: Jeux{titre:'New Super Mario Bros. U', annee:2012,ventes_unites_M:5.8, note%:84})
-  CREATE (mldream: Jeux{titre:'Mario & Luigi: Dream Team Bros.', annee:2013,ventes_unites_M:2.33, note%:81})
-  CREATE (sm3dw: Jeux{titre:'Super Mario 3D World', annee:2013,ventes_unites_M:5.8, note%:96})
-  CREATE (mamak: Jeux{titre:'Super Mario Maker', annee:2015, ventes_unites_M:4, note%:92})
-  CREATE (maluipap: Jeux{titre:'Mario & Luigi: Paper Jam Bros.', annee:2015,ventes_unites_M:1, note%:76})
-  CREATE (papmacol: Jeux{titre:'Paper Mario: Color Splash', annee:2016,ventes_unites_M:0.87, note%:74})
-  CREATE (smod: Jeux{titre:'Super Mario Odyssey', annee:2017, ventes_unites_M:14.4, note%:97})
-  CREATE (mkw: Jeux{titre:'Mario Kart Wii', annee:2008,ventes_unites_M:35.6, note%:82})
-  CREATE (mkdd: Jeux{titre:'Mario Kart Double Dash', annee:2003,ventes_unites_M:6.9, note%:87})
-  CREATE (mk8: Jeux{titre:'Mario Kart 8', annee:2014,ventes_unites_M:25.13, note%:90})
-  CREATE (ssb: Jeux{titre:'Super Smash Bros.', annee:1999,ventes_unites_M:5.55, note%:79})
-  CREATE (ssbm: Jeux{titre:'Super Smash Bros. Melee', annee:2001,ventes_unites_M:7.41, note%:92})
-  CREATE (ssbb: Jeux{titre:'Super Smash Bros. Brawl', annee:2008,ventes_unites_M:13.3, note%:93})
-  CREATE (ssb4: Jeux{titre:'Super Smash Bros. for 3DS & Wii U', annee:2014,ventes_unites_M:15, note%:89})
-  CREATE (ssbu: Jeux{titre:'Super Smash Bros. Ultimate', annee:2018,ventes_unites_M:13.81, note%:93})
-  CREATE (MarioParty: Jeux{titre:'Mario Party', annee:1998,ventes_unites_M:44.57, note%:65})
-  CREATE (msjo: Jeux{titre:'Mario & Sonic aux Jeux Olympiques', annee:2007,ventes_unites_M:null, note%:97})
+  CREATE (Mariobros :Jeux {titre:'Mario Bros', annee:1981, ventes_unités_M:2.3, note%:80,genre:'Plateformeur'})
+  CREATE (smb :Jeux {titre:'Super Mario Bros', annee:1985, ventes_unités_M:40, note%:null,genre:'Plateformeur'})
+  CREATE (lostlvl :Jeux {titre:'Super Mario Bros: The Lost Levels', annee:1986, ventes_unites_M:null, note%:null,genre:'Plateformeur'})
+  CREATE (smb2 :Jeux {titre:'Super Mario Bros 2', annee:1988, ventes_unites_M:7.5, note%:null,genre:'Plateformeur'})
+  CREATE (smb3 :Jeux {titre:'Super Mario Bros 3', annee:1990, ventes_unites_M:17.3, note%:null,genre:'Plateformeur'})
+  CREATE (sml :Jeux {tire:'Super Mario Land', annee:1989, ventes_unites_M:18.1, note%:null,genre:'Plateformeur'})
+  CREATE (drmario :Jeux {titre:'Dr. Mario', annee:1990, ventes_unites_M:null, note%:66,genre:'Puzzle'})
+  CREATE (smw :Jeux {titre:'Super Mario World', annee:1991, ventes_unites_M:20.6, note%:null,genre:'Plateformeur'})
+  CREATE (sml2 :Jeux {titre: 'Super Mario Land 2', annee:1992, ventes_unites_M:11.2, note%:null,genre:'Plateformeur'})
+  CREATE (smrpg :Jeux {titre: 'Super Mario RPG: Lengend of the Seven Stars', annee: 1995, ventes_unites_M:1.5, note%:88, genre:'RPG'})
+  CREATE (yoshiisl :Jeux {titre:'Yoshis Island', annee:1995, ventes_unites_M:null, note%:83,genre:'Plateformeur'})
+  CREATE (smsixfour :Jeux {titre:'Super Mario 64', annee:1996, ventes_unites_M:11.9, note%:94,genre:'Plateformeur'})
+  CREATE (paperm :Jeux {titre:'Paper Mario', annee:2001, ventes_unites_M:1.4, note%:93, genre:'RPG'})
+  CREATE (smsun :Jeux {titre:'Super Mario Sunshine', annee:2002, ventes_unites_M:6.3, note%:91,genre:'Plateformeur'})
+  CREATE (malusuperstar :Jeux {titre:'Mario & Luigi Superstar Saga', annee:2003, ventes_unites_M:2.17, note%:90, genre:'RPG'})
+  CREATE (mavsdk :Jeux {titre:'Mario vs Donkey Kong', annee:2004, ventes_unites_M:null , note%:null,genre:'Puzzle'})
+  CREATE (malubrotime :Jeux {titre: 'Mario & Luigi: Les frères du temps', annee:2005, ventes_unites_M:1.3, note%:86,genre:'RPG'})
+  CREATE (newsmb : Jeux {titre:'New Super Mario Bros.', annee:2006, ventes_unites_M:30.8, note%:89,genre:'Plateformeur'})
+  CREATE (smgal :Jeux{titre:'Super Mario Galaxy', annee:2007, ventes_unites_M:8.6, note%:97,genre:'Plateformeur'})
+  CREATE (mlvoycbow :Jeux{titre:'Mario & Luigi: Voyage au centre de Bowser', ventes_unites_M:null, note%:90,genre:'RPG'})
+  CREATE (nsmbw :Jeux{titre:'New Super Mario Bros Wii', annee:2009, ventes_unites_M:13.8, note%:87,genre:'Plateformeur'})
+  CREATE (smgtwo : Jeux{titre:'Super Mario Galaxy 2', annee:2010,ventes_unites_M:6.4, note%:90,genre:'Plateformeur'})
+  CREATE (sm3dl: Jeux{titre:'Super Mario 3D Land', annee:2011, ventes_unites_M:5.82, note%:93,genre:'Plateformeur'})
+  CREATE (nsmb2: Jeux{titre:'New Super Mario Bros. 2', annee:2012,ventes_unites_M:13.16, note%:78,genre:'Plateformeur'})
+  CREATE (nsmbu: Jeux{titre:'New Super Mario Bros. U', annee:2012,ventes_unites_M:5.8, note%:84,genre:'Plateformeur'})
+  CREATE (mldream: Jeux{titre:'Mario & Luigi: Dream Team Bros.', annee:2013,ventes_unites_M:2.33, note%:81, genre:'RPG'})
+  CREATE (sm3dw: Jeux{titre:'Super Mario 3D World', annee:2013,ventes_unites_M:5.8, note%:96,genre:'Plateformeur'})
+  CREATE (mamak: Jeux{titre:'Super Mario Maker', annee:2015, ventes_unites_M:4, note%:92,genre:'Plateformeur'})
+  CREATE (maluipap: Jeux{titre:'Mario & Luigi: Paper Jam Bros.', annee:2015,ventes_unites_M:1, note%:76, genre:'RPG'})
+  CREATE (papmacol: Jeux{titre:'Paper Mario: Color Splash', annee:2016,ventes_unites_M:0.87, note%:74, genre:'RPG'})
+  CREATE (smod: Jeux{titre:'Super Mario Odyssey', annee:2017, ventes_unites_M:14.4, note%:97, genre:'Plateformeur'})
+  CREATE (mkw: Jeux{titre:'Mario Kart Wii', annee:2008,ventes_unites_M:35.6, note%:82,genre:'Course'})
+  CREATE (mkdd: Jeux{titre:'Mario Kart Double Dash', annee:2003,ventes_unites_M:6.9, note%:87,genre:'Course'})
+  CREATE (mk8: Jeux{titre:'Mario Kart 8', annee:2014,ventes_unites_M:25.13, note%:90,genre:'Course'})
+  CREATE (ssb: Jeux{titre:'Super Smash Bros.', annee:1999,ventes_unites_M:5.55, note%:79,genre:'Combat'})
+  CREATE (ssbm: Jeux{titre:'Super Smash Bros. Melee', annee:2001,ventes_unites_M:7.41, note%:92,genre:'Combat'})
+  CREATE (ssbb: Jeux{titre:'Super Smash Bros. Brawl', annee:2008,ventes_unites_M:13.3, note%:93,genre:'Combat'})
+  CREATE (ssb4: Jeux{titre:'Super Smash Bros. for 3DS & Wii U', annee:2014,ventes_unites_M:15, note%:89,genre:'Combat'})
+  CREATE (ssbu: Jeux{titre:'Super Smash Bros. Ultimate', annee:2018,ventes_unites_M:13.81, note%:93,genre:'Combat'})
+  CREATE (MarioParty: Jeux{titre:'Mario Party', annee:1998,ventes_unites_M:44.57, note%:65,genre:'Party Game'})
+  CREATE (msjo: Jeux{titre:'Mario & Sonic aux Jeux Olympiques', annee:2007,ventes_unites_M:12.31, note%:97,genre:'Party Game'})
+
+    //TLOZ
+  CREATE (TLOZ :Jeux {nom:'The Legend Of Zelda', annee:1987, ventes_unites_M:6.51, note%:null,genre:'Aventure'})
+  CREATE( TLOZ2 :Jeux {nom:'The Legend Of Zelda: The Adventure of Link ', annee:1987, ventes_unites_M:null note%:null,genre:'Aventure'})
+  CREATE( TLOZALP :Jeux {nom:'The Legend Of Zelda: A Link to the Past', annee:1991, ventes_unites_M:4.61 note%:95,genre:'Aventure'})
+  CREATE(TLOZLA  :Jeux {nom:'The Legend Of Zelda: Link's Awakening', annee:1993, ventes_unites_M:3.83, note%:null ,genre:'Aventure'})
+  CREATE(TLOZOOT :Jeux {nom:'The Legend Of Zelda: Ocarina Of Time', annee:1998, ventes_unites_M:7.6, note%:99,genre:'Aventure'})
+  CREATE(TLOZMM :Jeux {nom:'The Legend Of Zelda: Majora's Mask', annee:2000, ventes_unites_M:null, note%:95,genre:'Aventure'})
+  CREATE (TLOZMC :Jeux {nom:'The Legend Of Zelda: The Minish Cap', annee:2004, ventes_unites_M:null, note%:89,genre:'Aventure'})
+  CREATE (TLOZTP ;Jeux {nom:'The Legend Of Zelda: Twilight Princess',annee:2006, ventes_unites_M:1.43,note%:89,genre:'Aventure'})
+  CREATE(TLOZPH  :Jeux {nom})
+
+    //Jeux en loose
+  CREATE (dh: Jeux{titre: 'Duck Hunt', annee:1984,ventes_unites_M:null, note%:null,genre:'Tir'})
+  CREATE (wiifit: Jeux{titre: 'Wii Fit', annee:2008,ventes_unites_M:22.67, note%:80,genre:'Sport'})
+  CREATE (wiifitPLus: Jeux{titre: 'Wii Fit Plus', annee:2009,ventes_unites_M:21.13, note%:80,genre:'Sport'})
+  CREATE (ws: Jeux{titre:'Wii Sports', annee 2006, ventes_unites_M:82.87, note%:76,genre:'Sport'})
+  CREATE (wsr: Jeux{titre:'Wii Sports Resort', annee 2009, ventes_unites_M:33.1, note%:80,genre:'Sport'})
+  CREATE (Spl  :Jeux {titre:'Splatoon', annee:2015,ventes_unites_M:4.9, note%:81,genre:'TPS'})
+  CREATE (Spl2 :Jeux {titre:"Splatoon2", annee:2017, ventes_unites_M:8.7, note%:83,genre:'TPS'})
+  CREATE (PunchOut  :Jeux {titre:'Punch-Out!!', annee:2009,ventes_unites_M:4.16, note%:86, genre:'Sport'})
+  CREATE (KidIcarus :Jeux {titre:"Kid Icarus", annee:2012, ventes_unites_M:3.07, note%:80, genre:'Ray shooter'})
+  CREATE (pm: Jeux {titre:'Pikmin', annee:2001,ventes_unites_M:4, note%:90,genre:'Gestion'})
+  CREATE (MetalSolid: Jeux {titre:'Metal Gear Solid', annee:1998,ventes_unites_M:6, note%:94,genre:'Inflitration'})
+  CREATE (IceClimber: Jeux {titre:'Ice CLimbers', annee:2004,ventes_unites_M:1.5, note%:66,genre:'Plateformeur'})
+  CREATE (fz: Jeux {titre:'F-Zero', annee:1990,ventes_unites_M:2.9, note%:85,genre:'Course'})
+  CREATE (Mother: Jeux {titre:'Mother', annee:1989,ventes_unites_M:null, note%:null,genre:'RPG'})
+  CREATE (dkc: Jeux {titre:'Donkey Kong Country', annee:1994,ventes_unites_M:, note%:,genre:'Plateformeur'})
+  CREATE (sf: Jeux {titre:'Star Fox', annee:1993, annee:1994,ventes_unites_M:, note%:,genre:'Ray shooter'})
+  CREATE (acww: Jeux{titre:'Animal Crossing Wild World', annee:2005,ventes_unites_M:, note%:, genre:'Gestion'})
+  CREATE (acnl : Jeux{titre:'Animal Crossing New Leaf', annee:2012,ventes_unites_M:, note%:, genre:'Gestion'})
+  CREATE (KirbyDream: Jeux{titre:'Kirbys Dream Land', annee:1992,ventes_unites_M:5.13, note%:77,genre:'Plateformeur'})
+  CREATE (KirbySuperUltra: Jeux{titre:'Kirby Super Star Ultra', annee:2008,ventes_unites_M:2.99, note%:76,genre:'Plateformeur'})
+  CREATE (KirbyReturnDream: Jeux{titre:'Kirbys Return to Dreamland', annee:2011,ventes_unites_M:1.79, note%:77,genre:'Plateformeur'})
+  CREATE (GameAndWatch: Jeux {titre:'Jeux Game & Watch', annee:1980,ventes_unites_M:null, note%:null,genre:null})
+  CREATE (StreetFighter : Jeux{titre:'Street Fighter II: The World Warrior ',annee:1992,ventes_unites_M:6.3, note%:86, genre:'Combat'})
+  CREATE (Sonic: Jeux {titre:'Sonic Mania', annee:2017,ventes_unites_M:null, note%:86,genre:'Plateformeur'})
+//----------------------------------------------------------------------------------------//
+
 
   //Personnages
   CREATE (Mario:personnage {nom:'Mario(Jumpman)', annee:1981})
@@ -176,31 +216,13 @@ CREATE
   CREATE (Bb_Mario:personnage {nom:'Bebe Mario', annee:1995})
   CREATE (Bb_Luigi:personnage {nom:'Bebe Luigi', annee:1995})
   CREATE (Bowsers_army:personnage {nom:'Armée de Bowser', annee:1981})
+  CREATE (ProfessorLayton:personnage {nom:'Professeur Layton', annee:2007})
+  CREATE (Luke:personnage{nom:'Luke', annee 2007})
+
+//----------------------------------------------------------------------------------------//
 
 
-
-
-    //-Pokémon
-    //-Mario
-    //-Donkey Kong
-    //-Zelda
-    //-Kirby
-    //-Animal Crossing
-    //-F0
-    //-Ice Climbers
     //-Metroïd
-    //-Star Fox
-    //-Mother
-    //-Final Fantasy
-    //-Game & Watch
-    //-Kid Icarus
-    //-Metal Gear Solid
-    //-Sonic
-    //-Pikmin
-    //-R.O.B.
-    //-Wii-Fit
+    //FF 4, 7, 10.1, 10.2
+
     //-Mega Man
-    //-Punch Out
-    //-Duck Hunt
-    //-Street Figther
-    //-Splatoon
