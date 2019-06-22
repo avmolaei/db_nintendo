@@ -6,7 +6,6 @@ Ceci est le repository de notre groupe pour l'atelier. Vous y trouverez un dossi
 -**_[rapport_universnintendo.pdf](https://github.com/avmolaei/db_nintendo/blob/master/UniversNintendo/rapport_universnintendo.pdf)_**, notre rapport d'exploitation<br/>
 -BDD_UNIVERSNINTENDO<br/>
 &nbsp;&nbsp;&nbsp;~CSV_UNIVERSNINTENDO 
-
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> **_csv_universnintendo.csv_**, la base de donnée au format .csv.<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> **_cyper_universnintendo.cql_**, la création des noeuds et des relations en Cypher<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> **_requetes_universnintendo.txt_**, les requetes qui sont présentées dans le rapport.<br/><br/>
