@@ -1,0 +1,133 @@
+//I./ Personnages qui vendent le plus de copies:
+MATCH(j:jeux)<-[:apparait_dans]-(p:personnage)
+WHERE j.ventes IS NOT null
+RETURN j.ventes AS `nombre de copies vendues`, p.nom AS Personnages ORDER BY j.ventes DESC
+//---------------------------------------------------------------------------------------------------
+//II../ Studio qui vendent le plus de copies:
+MATCH (s8:Studios)-[:a_developpe]->(j8:Jeux)
+WHERE j8.ventes IS NOT null AND s8.nom="Studio Partenaire"
+return s8.nom as `Studio`, sum(j8.ventes) as `Nombre de copies vendues en millions`
+UNION
+MATCH (s:Studios)-[:a_developpe]->(j:Jeux)
+WHERE j.ventes IS NOT null AND s.nom="Nintendo Entertainement Planning & Development"
+return s.nom as `Studio`, sum(j.ventes) as `Nombre de copies vendues en millions`
+UNION
+MATCH (s6:Studios)-[:a_developpe]->(j6:Jeux)
+WHERE j6.ventes IS NOT null AND s6.nom="Gamefreak"
+return s6.nom as `Studio`, sum(j6.ventes) as `Nombre de copies vendues en millions`
+UNION
+MATCH (s2:Studios)-[:a_developpe]->(j2:Jeux)
+WHERE j2.ventes IS NOT null AND s2.nom="HAL Laboratory/SORA Ltd"
+return s2.nom as `Studio`, sum(j2.ventes) as `Nombre de copies vendues en millions`
+UNION
+MATCH (s1:Studios)-[:a_developpe]->(j1:Jeux)
+WHERE j1.ventes IS NOT null AND s1.nom="Square (Enix)"
+return s1.nom as `Studio`, sum(j1.ventes) as `Nombre de copies vendues en millions`
+UNION
+MATCH (s9:Studios)-[:a_developpe]->(j9:Jeux)
+WHERE j9.ventes IS NOT null AND s9.nom="Autre"
+return s9.nom as `Studio`, sum(j9.ventes) as `Nombre de copies vendues en millions`
+UNION
+MATCH (s5:Studios)-[:a_developpe]->(j5:Jeux)
+WHERE j5.ventes IS NOT null AND s5.nom="Intelligent Systems"
+return s5.nom as `Studio`, sum(j5.ventes) as `Nombre de copies vendues en millions`
+UNION
+MATCH (s3:Studios)-[:a_developpe]->(j3:Jeux)
+WHERE j3.ventes IS NOT null AND s3.nom="Monolith Soft"
+return s3.nom as `Studio`, sum(j3.ventes) as `Nombre de copies vendues en millions`
+UNION
+MATCH (s4:Studios)-[:a_developpe]->(j4:Jeux)
+WHERE j4.ventes IS NOT null AND s4.nom="Platinum Games"
+return s4.nom as `Studio`, sum(j4.ventes) as `Nombre de copies vendues en millions`
+UNION
+MATCH (s7:Studios)-[:a_developpe]->(j7:Jeux)
+WHERE j7.ventes IS NOT null AND s7.nom="Retro Studios"
+return s7.nom as `Studio`, sum(j7.ventes) as `Nombre de copies vendues en millions`
+//---------------------------------------------------------------------------------------------------
+//III.../ Plateformes qui vendent le plus de jeux:
+MATCH(j:Jeux)-[:sorti_sur]->(p:Plateforme)
+WHERE j.ventes IS NOT null AND p.nom="Game and Watch"
+RETURN p.nom as `Plateforme`, sum(j.ventes) as `Nombre de copies vendues en millions`
+UNION
+MATCH(j1:Jeux)-[:sorti_sur]->(p1:Plateforme)
+WHERE j1.ventes IS NOT null AND p1.nom="Game Boy"
+RETURN p1.nom as `Plateforme`, sum(j1.ventes) as `Nombre de copies vendues en millions`
+UNION
+MATCH(j2:Jeux)-[:sorti_sur]->(p2:Plateforme)
+WHERE j2.ventes IS NOT null AND p2.nom="Game Boy Color"
+RETURN p2.nom as `Plateforme`, sum(j2.ventes) as `Nombre de copies vendues en millions`
+UNION
+MATCH(j3:Jeux)-[:sorti_sur]->(p3:Plateforme)
+WHERE j3.ventes IS NOT null AND p3.nom="Game Boy Advance"
+RETURN p3.nom as `Plateforme`, sum(j3.ventes) as `Nombre de copies vendues en millions`
+UNION
+MATCH(j4:Jeux)-[:sorti_sur]->(p4:Plateforme)
+WHERE j4.ventes IS NOT null AND p4.nom="Famille Nintendo DS"
+RETURN p4.nom as `Plateforme`, sum(j4.ventes) as `Nombre de copies vendues en millions`
+UNION
+MATCH(j5:Jeux)-[:sorti_sur]->(p5:Plateforme)
+WHERE j5.ventes IS NOT null AND p5.nom="Famille Nintendo 3DS"
+RETURN p5.nom as `Plateforme`, sum(j5.ventes) as `Nombre de copies vendues en millions`
+UNION
+MATCH(j6:Jeux)-[:sorti_sur]->(p6:Plateforme)
+WHERE j6.ventes IS NOT null AND p6.nom="Appareils Androïd/IOS"
+RETURN p6.nom as `Plateforme`, sum(j6.ventes) as `Nombre de copies vendues en millions`
+UNION
+MATCH(j7:Jeux)-[:sorti_sur]->(p7:Plateforme)
+WHERE j7.ventes IS NOT null AND p7.nom="Arcade"
+RETURN p7.nom as `Plateforme`, sum(j7.ventes) as `Nombre de copies vendues en millions`
+UNION
+MATCH(j8:Jeux)-[:sorti_sur]->(p8:Plateforme)
+WHERE j8.ventes IS NOT null AND p8.nom="NES/Famicom"
+RETURN p8.nom as `Plateforme`, sum(j8.ventes) as `Nombre de copies vendues en millions`
+UNION
+MATCH(j9:Jeux)-[:sorti_sur]->(p9:Plateforme)
+WHERE j9.ventes IS NOT null AND p9.nom="SNES/Super Famicom"
+RETURN p9.nom as `Plateforme`, sum(j9.ventes) as `Nombre de copies vendues en millions`
+UNION
+MATCH(j10:Jeux)-[:sorti_sur]->(p10:Plateforme)
+WHERE j10.ventes IS NOT null AND p10.nom="Nintendo 64"
+RETURN p10.nom as `Plateforme`, sum(j10.ventes) as `Nombre de copies vendues en millions`
+UNION
+MATCH(j11:Jeux)-[:sorti_sur]->(p11:Plateforme)
+WHERE j11.ventes IS NOT null AND p11.nom="GameCube"
+RETURN p11.nom as `Plateforme`, sum(j11.ventes) as `Nombre de copies vendues en millions`
+UNION
+MATCH(j12:Jeux)-[:sorti_sur]->(p12:Plateforme)
+WHERE j12.ventes IS NOT null AND p12.nom="Wii"
+RETURN p12.nom as `Plateforme`, sum(j12.ventes) as `Nombre de copies vendues en millions`
+UNION
+MATCH(j13:Jeux)-[:sorti_sur]->(p13:Plateforme)
+WHERE j13.ventes IS NOT null AND p13.nom="Wii U"
+RETURN p13.nom as `Plateforme`, sum(j13.ventes) as `Nombre de copies vendues en millions`
+UNION
+MATCH(j14:Jeux)-[:sorti_sur]->(p14:Plateforme)
+WHERE j14.ventes IS NOT null AND p14.nom="Switch"
+RETURN p14.nom as `Plateforme`, sum(j14.ventes) as `Nombre de copies vendues en millions`
+UNION
+MATCH(j15:Jeux)-[:sorti_sur]->(p15:Plateforme)
+WHERE j15.ventes IS NOT null AND p15.nom="Autres plateformes"
+RETURN p15.nom as `Plateforme`, sum(j15.ventes) as `Nombre de copies vendues en millions`
+//---------------------------------------------------------------------------------------------------
+//IV..../ “Les amis de mes amis sont mes amis”
+MATCH(p1:personnage)-[:allie]->(p2:personnage)<-[:allie]-(p3:personnage)
+WHERE  NOT (p1)-[:allie]->(p3)
+RETURN  (p1.nom) AS `personnage`, collect (DISTINCT p2.nom) AS `allié au premier degré`, collect (DISTINCT p3.nom) AS `allié au deuxieme degré`
+//---------------------------------------------------------------------------------------------------
+//V...../ “Les ennemis de mes amis sont mes ennemis”
+MATCH(p1:personnage)-[:allie]->(p2:personnage)<-[:antagoniste]-(p3:personnage)
+WHERE  NOT (p1)-[:allie]->(p3)
+AND NOT (p1)=(p3)
+return (p1.nom) as `personnage` ,collect (DISTINCT p2.nom) as `allié du personnage` ,collect (DISTINCT p3.nom)  as `ennemi au deuxieme degré`
+//---------------------------------------------------------------------------------------------------
+//VI....../“Les ennemis de mes ennemis sont mes amis”
+MATCH(p1:personnage)-[:antagoniste]->(P:personnage)<-[:antagoniste]-(p2:personnage)
+WHERE NOT (p1)-[:allie]->(p2)
+AND NOT (p1)=(p2)
+RETURN (p1.nom) AS `Personnage 1`, collect(DISTINCT P.nom) as `Ennemi Commun`, collect(DISTINCT p2.nom) as `Personnage 2`
+//---------------------------------------------------------------------------------------------------
+//VII.….../ Classement des meilleurs Jeux
+MATCH(j:Jeux)
+WHERE j.note IS NOT NULL
+RETURN DISTINCT j.titre as Nom, j.note as Note, j.annee as Annee, ORDER BY j.note DESC limit 15
+//---------------------------------------------------------------------------------------------------
