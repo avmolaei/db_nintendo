@@ -2,9 +2,12 @@
 ## Base de donnée Orientée Graphe avec Neo4j: Univers Nintendo
 
 Bonjour!
-Ceci est le repository de notre groupe pour l'atelier. Vous y trouverez principalement:
-- **_db_nintendo.cql_**, la création des noeuds et des relations en Cypher
-- **_requetes.txt_**, les requetes qui sont présentées dans le rapport.
+Ceci est le repository de notre groupe pour l'atelier. Vous y trouverez un dossier UniversNintendo, qui contient<br/>
+-**_[rapport_universnintendo.pdf](https://github.com/avmolaei/db_nintendo/blob/master/Nintendo%20DB.pdf)_**, notre rapport d'exploitation<br/>
+-BDD_UNIVERSNINTENDO<br/>
+&nbsp;&nbsp;&nbsp;~CSV_UNIVERSNINTENDO   <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> **_cyper_universnintendo.cql_**, la création des noeuds et des relations en Cypher<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> **_requetes_universnintendo.txt_**, les requetes qui sont présentées dans le rapport.<br/>
 
 Pour **charger la base de donnée dans Neo4j** (après avoir créé un graphe)
 - Aller dans le naviguateur
