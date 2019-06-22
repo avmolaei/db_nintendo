@@ -12,7 +12,7 @@ Ceci est le repository de notre groupe pour l'atelier. Vous y trouverez un dossi
 Pour **charger la base de donnée dans Neo4j** (après avoir créé un graphe)
 - Aller dans le naviguateur
 - _options_>"_Enable multi statement query editor_">activé
-- copier le contenu de **_db_nintendo.cql_**
+- copier le contenu de **_cyper_universnintendo.cql_**
 - le coller dans le navigateur
 
 Les données étant générées en Cypher dans **_db_nintendo.cql_**, il n'est pas nécessaire de charger le csv. Il est tout de meme présent.
